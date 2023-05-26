@@ -22,7 +22,7 @@ namespace xadrez
             capturadas = new HashSet<Peca>();
             colocarPecas();
         }
-         
+
         public void ExecutaMovimento(Posicao origem, Posicao destino)
         {
             Peca p = tab.retirarPeca(origem);
@@ -83,7 +83,11 @@ namespace xadrez
             HashSet<Peca> aux = new HashSet<Peca>();
             foreach (Peca x in capturadas)
             {
-                aux.Add(x);
+                if (x.cor == cor)
+                {
+                    aux.Add(x);
+                }
+
             }
             return aux;
         }
@@ -93,7 +97,10 @@ namespace xadrez
             HashSet<Peca> aux = new HashSet<Peca>();
             foreach (Peca x in pecas)
             {
-                aux.Add(x);
+                if ((x.cor == cor))
+                {
+                    aux.Add(x);
+                }
             }
             aux.ExceptWith(pecasCapturadas(cor));
             return aux;
@@ -114,6 +121,7 @@ namespace xadrez
             colocarNovaPeca('e', 2, new Torre(tab, Cor.Branca));
             colocarNovaPeca('e', 1, new Torre(tab, Cor.Branca));
             colocarNovaPeca('d', 1, new Rei(tab, Cor.Branca));
+
             colocarNovaPeca('c', 7, new Torre(tab, Cor.Preta));
             colocarNovaPeca('c', 8, new Torre(tab, Cor.Preta));
             colocarNovaPeca('d', 7, new Torre(tab, Cor.Preta));
